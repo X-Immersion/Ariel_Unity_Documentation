@@ -1,0 +1,403 @@
+# API Reference
+
+**[← Table of contents](/README.md#table-of-contents)**
+
+### On this page
+
+[Ariel Text-To-Speech](#ariel-text-to-speech)<br/>
+[On Ariel Response](#on-ariel-response)<br/>
+[Audio WAV bytes to SoundWave](#audio-wav-bytes-to-soundwave)<br/>
+#### [Utilities](#utilities-1)
+    [Get available Speakers](#get-available-speakers-pure)<br/>
+    [On Speakers Received](#on-speakers-received)<br/>
+    [Scheme filename](#scheme-filename)<br/>
+#### [Editor only](#editor-only-1)
+    [Show folder selection dialog](#show-folder-selection-dialog)<br/>
+    [Save bytes to file](#save-bytes-to-file)<br/>
+    [Get Documentation URL](#get-documentation-url)<br/>
+#### [Structures](#structures-1)
+    [Ariel Speaker](#ariel-speaker-farielspeaker)<br/>
+#### [Enumerations](#enumerations-1)
+    [Ariel Audio Format](#ariel-audio-format-earielaudioformat)<br/> 
+    [Ariel Audio Effect](#ariel-audio-effect-earielaudioeffect)<br/> 
+#### [Startup Functions](#startup-functions-1) 
+    [Start Ariel Subsystem](#start-ariel-subsystem)<br/> 
+    [On Ariel Subsystem Started](#foarielinitialized)<br/>
+    [Stop Ariel Subsystem](#stop-ariel-subsystem)<br/>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Ariel Text-To-Speech
+
+> The following is all equivalent to the [Ariel Local TTS](/doc/Quickstart.md#-runtime-generation) feature and will behave the same way and therefore not described in detail here.
+
+C++ Function: `UArielBPLibrary::ArielTTS`
+
+This node calls the Ariel API using **HTTPS** request with all defined parameters (speaker, sentence, format, effects, …). The response is sent through a multicast delegate event, [On Ariel Response](#on-ariel-response).
+
+![Ariel Text-To-Speech node](/res/ariel_text_to_speech.png)
+
+### Parameters
+
+| Name              | Type           | Default value     | Description |
+| ----------------- | -------------- | ----------------- | ----------- |
+| Speaker           | const FString& | *empty string*    | The speaker used to generate the speech. See [available speakers](/README.md#speakers). |
+| Language          | const FString& | *empty string*    | The speaker language used to generate the speech. Leave empty to select the default language associated with the speaker. |
+| Sentence          | const FString& | *empty string*    | The sentence of the speech. |
+| Voice Adjustments | const bool     | `false`           | Try to enhance the generated audio with AI. It sometimes can lead to unwanted sounds, but in general improves quality. |
+| Audio Format      | const [EArielAudioFormat](#ariel-audio-format-earielaudioformat) | `wav`    | The audio format of the generated file. |
+| Volume            | const int      | `0`dB             | Amplify or reduce the volume specified in dB. |
+| High Framerate    | const bool     | `false`           | Generate an audio with a frame rate of 44.1KHz instead of 22.05. |
+| Semitones         | const int      | `+0`st            | Shifts the sound by the given semitones. **Can be positive or negative**. |
+| Speed             | const float    | x`1.0`            | Increase or decrease the sound speed. **Must be greater than 0**. |
+| Audio Effects     | const TArray\<[EArielAudioEffect](#ariel-audio-effect-earielaudioeffect)\>& | *empty array* (no effects) | List of all audio effects who will be applied to the audio.<br/> See [🎚️ Audio effects](/doc/Features.md#-audio-effects). |
+| Logs              | const bool     | `false`           | Indicate if logs should be printed to the console. |
+| On Response       | [FOnArielResponse](#on-ariel-response) | -               | The event called when a response was received. |
+
+> The local TTS version currently does not support the use of Audio Effects. Those will not have any effect on the generated audio. They will be added in a future release.
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## On Ariel Response
+
+C++ Declaration: `FOnArielResponse`
+
+Use the nodes *Add Custom Event...* or *Create Event* to bind the [Ariel Text-To-Speech](#ariel-text-to-speech) delegate to a Blueprint Event or function.
+
+![On ariel response node](/res/on_ariel_response_1.png)<br/>
+![On ariel response 2 node](/res/on_ariel_response_2.png)
+
+### Return values
+
+| Name              | Type                  | Description |
+| ----------------- | --------------------- | ----------- |
+| Success           | bool                  | Indicate if the response audio bytes have successfully been downloaded. |
+| File Bytes        | const TArray\<uint8\>&  | The generated audio file bytes array, if the request was successful. |
+| Error Message     | const FString&        | The error message, if the request was not successful. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Audio WAV bytes to SoundWave
+
+C++ Function: `UArielBPLibrary::WavBytesToSoundWave`
+
+Create a new SoundWave object from the generated audio WAV file byte array. See [Ariel Text-To-Speech](#ariel-text-to-speech) and [On Ariel Response](#on-ariel-response) for more details on how to generate the audio bytes.
+
+![Audio WAV bytes to SoundWave node](/res/audio_wav_bytes_to_soundwave.png)
+
+### Parameters
+
+| Name        | Type                   | Default value | Description |
+| ----------- | ---------------------- | ------------- | ----------- |
+| Audio Bytes | const TArray\<uint8\>& | -             | The WAV file bytes. **Warning:** Must be PCM-16 for Unreal Engine! |
+
+### Return values
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| Success      | bool&       | Indicate if the SoundWave object have been successfully created. |
+| Out Reason   | FString&    | The SoundWave creation error message. |
+| Return Value | USoundWave* | The created SoundWave Asset, or `nullptr` if the Asset couldn't be created. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+---
+
+<br/><br/>
+
+# Utilities
+
+The following nodes have been created to help the usage of the Ariel plugin, but they are not part of the main plugin usage. The nodes below can be used in runtime and packaged projects, unlike the nodes described in the [Editor](#editor-only-1) section.
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Get available Speakers
+
+C++ Function: `UArielBPLibrary::GetSpeakersFromSettings`
+
+Get the available speakers list from the project settings.
+
+![Get available Speakers node](/res/get_available_speakers.png)
+
+### Return values
+
+| Name         | Type                    | Description |
+| ------------ | ----------------------- | ----------- |
+TArray\<[FArielSpeaker](#ariel-speaker-farielspeaker)\> | The list of available speakers. 
+| Logs          | const bool            | `true`         | Indicate if logs should be printed to the console. |
+| On Response       | [FOnSpeakersAvailable](#on-speakers-received) | -               | The event called when a response was received. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## On Speakers Received
+
+C++ Declaration: `FOnSpeakersAvailable`
+
+Use the nodes *Add Custom Event...* or *Create Event* to bind the [Available Speakers](#get-available-speakers) delegate to a Blueprint Event or function.
+
+
+### Return values
+
+| Name              | Type                  | Description |
+| ----------------- | --------------------- | ----------- |
+| Speakers           | TArray\<[FArielSpeaker](#ariel-speaker-farielspeaker)\> | The list of available speakers. |
+
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Scheme filename
+
+C++ Function: `UArielBPLibrary::SchemeFilename`
+
+Replace shamed templates with the actual value for the Ariel filename.
+
+You can use the schemes below to customize the name of the generated audio:
+
+* `{speaker}` The name of the speaker.
+* `{date}` The current date (from OS).
+* `{time}` The current time (from OS).
+* `{datetime}` The current date time (from OS).
+* `{uuid}` The UUID (or GUID).
+* `{format}` The audio format.
+
+Example:
+> `TTS_{speaker}_{datetime}.{format}` will become `TTS_Oriane_2023-01-01_23-59-00.wav`
+
+![Scheme filename node](/res/scheme_filename.png)
+
+### Parameters
+
+| Name        | Type                 | Default value  | Description |
+| ----------- | -------------------- | -------------- | ----------- |
+| Schemed Filename | const FString&  | *empty string* | The ariel filename with templates (like `{uuid}` or `{speaker}`). |
+| Speaker     | const FString&       | *empty string* | The speaker name that will be used to replace `{speaker}` scheme. |
+| Format      | [EArielAudioFormat](#ariel-audio-format-earielaudioformat) | `wav`     | The format that will be used to replace `{format}` scheme. |
+| UUID        | const FString&       | *empty string* | The UUID (or GUID) that will be used to replace `{uuid}` scheme. |
+
+### Return values
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| Return value | FString | The new Ariel filename with all schemes replaced. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+---
+
+<br/><br/>
+
+# Editor only
+
+The following nodes can **ONLY** be used when the Unreal Editor is running. The nodes won't be compiled on packaged projects and will result as a crash if they are called anyway. Please be careful when using these nodes.
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Show folder selection dialog
+
+C++ Function: `UArielEditorLibrary::ShowFolderSelectionDialog`
+
+Open the Operating System folder selection dialog. This allows to select a folder located **outside** the project.
+
+![Show folder selection dialog node](/res/show_folder_selection_dialog.png)
+
+### Return values
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| Selected Dir | FString& | The absolute directory path (Unix style, with `/`). |
+| Return value | bool     | True if a folder was selected by the user, false otherwise. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Save bytes to file
+
+C++ Function: `UArielEditorLibrary::SaveToFile`
+
+Write the given bytes to a file. If the file already exists, it will be overwritten. You can use this function to write other file than Ariel audio files. In this case, do not forget to put the file extension with the filename. 
+
+![Save bytes to file node](/res/save_bytes_to_file.png)
+
+### Parameters
+
+| Name          | Type                  | Default value  | Description |
+| ------------- | --------------------- | -------------- | ----------- |
+| Bytes         | const TArray\<uni8\>& | -              | The bytes to write in the file. |
+| Filename      | const FString&        | `ArielAudio`   | The file name. You can specify the file extension as well (i.e: 'ArielAudio.ogg'). |
+| DirectoryPath | const FDirectoryPath& | -              | The directory where the file will be written. Can be inside or outside the project directory. |
+| Format        | const [EArielAudioFormat](#ariel-audio-format-earielaudioformat) | `wav`| The audio format used for file extension (if not already provided with the filename). |
+| Logs          | const bool            | `true`         | Indicate if logs should be printed to the console. |
+
+### Return values
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| Out Path     | FString& | The absolute file path (Unix style, with `/`), fully qualified. |
+| Return value | bool     | True if the file was (over)written, false otherwise (like an invalid path or a permission error). |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Get Documentation URL
+
+C++ Function: `UArielEditorLibrary::GetDocumentationURL`
+
+Get the current Ariel plugin documentation URL.
+
+![Get documentation URL node](/res/get_documentation_url.png)
+
+### Return values
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| Return value | FString  | The documentation URL (static, inline). Use it with the Unreal node *Launch URL*. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+---
+
+<br/>
+
+# Structures
+
+C++ and Blueprint structs defined by the Ariel plugin.
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Ariel Speaker *(FArielSpeaker)*
+
+C++ Declaration: `FArielSpeaker`
+
+The JSON structure of a speaker returned by the Ariel API. You can find the speakers list with all details [here](/README.md#speakers). The Speaker list can vary depending on your API key inside [Project settings](/doc/Others.md#plugin-project-settings) and the local models inside the [models folder](/doc/Others.md#adding-local-models).
+
+![Ariel speaker break node](/res/ariel_speaker.png)
+
+### Variables
+
+| Name      | Type              | Editor           | Blueprint | Description |
+| --------- | ----------------- | ---------------- | --------- | ----------- |
+| ID        | int               | Visible Anywhere | Read-only | The Ariel Speaker identifier. |
+| Name      | FString           | Visible Anywhere | Read-only | The Ariel Speaker name. |
+| Gender    | Gender            | Visible Anywhere | Read-only | The Ariel Speaker gender. Gender is currently not in use. |
+| Languages | TArray\<FString\> | Visible Anywhere | Read-only | The Ariel Speaker language(s). |
+| Local Execution | bool | Visible Anywhere | Read-only | If an available speaker can be used for local or remote execution. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+---
+
+<br/><br/>
+
+# Enumerations
+
+C++ and Blueprint enumerations defined by the Ariel plugin.
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Ariel Audio Effect *(EArielAudioEffect)*
+
+C++ Declaration: `EArielAudioEffect`
+
+This enum contains all Ariel audio effects available. See [🎚️ Audio effects](/doc/Features.md#-audio-effects) for more details.
+
+![Ariel audio effect make node](/res/ariel_audio_effect.png)<br/>
+*Hover the cursor on a value to see more details about it.*
+
+### Values
+
+| Name              | Description |
+| ----------------- | ----------- |
+| **Telephone**     | The voice sounds like it's coming from a phone. |
+| **Cave**          | The voice sounds like the speaker is in a cave. |
+| **Small cave**    | The voice sounds like the speaker is in a small cave. |
+| **Gas mask**      | The voice sounds like the speaker has a gas mask. |
+| **Bad reception** | The voice sounds like it's coming from a phone with a bad reception. |
+| **Next room**     | The voice sounds like the speaker is in the next room. |
+| **Alien**         | An alien audio effect is added to the voice. |
+| **Alien 2 (alt)** | An other alien audio effect (like in the space) is added to the voice. |
+| **Stereo**        | The audio file have two channels (the mono channel is duplicated). |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Ariel Audio Format *(EArielAudioFormat)*
+
+C++ Declaration: `EArielAudioFormat`
+
+This enum contains all supported ariel audio file formats.
+
+![Ariel audio format make node](/res/ariel_audio_format.png)<br/>
+*Hover the cursor on a value to see more details about it.*
+
+### Values
+
+| Name | Description |
+| ---- | ----------- |
+| WAV  | PCM-16 RIFF Waveform audio file. |
+| MP3  | MPEG-1/2 audio file. |
+
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## Start Ariel Subsystem
+
+C++ Function: `UArielBPLibrary::StartSubsystem`
+
+Starts the background server for the Ariel plugin. This function needs to be called when using the local version of Ariel.
+
+![Start Ariel Subsystem](/res/start_ariel_subsystem.png)
+
+### Return values
+
+| Name         | Type                    | Description |
+| ------------ | ----------------------- | ----------- |
+| On Response       | [FOnArielInitialized](#foarielinitialized) | -               | The event called when a response was received. |
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<br/>
+
+## FOArielInitialized
+
+C++ Declaration: `FOnArielInitialized`
+
+Use the nodes *Add Custom Event...* or *Create Event* to bind the [Startup of the local Ariel Server](#start-ariel-subsystem) delegate to a Blueprint Event or function.
+
+
+### Return values
+
+| Name              | Type                  | Description |
+| ----------------- | --------------------- | ----------- |
+| Success          | bool                  | Indicate if the local Ariel Server has started successfully |
+
+
+## Stop Ariel Subsystem
+
+C++ Function: `UArielBPLibrary::StopSubsystem`
+
+Stops the background server for the Ariel plugin. This function needs to be called when exiting the game. If this is not called, the server will continue to run in the background.
+
+### Return values
+
+| Name         | Type                    | Description |
+| ------------ | ----------------------- | ----------- |
+| -           | -                       | No return value. |
