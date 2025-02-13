@@ -4,48 +4,48 @@
 
 ### On this page
 
-[Introduction](#introduction)<br/>
-#### [Ariel Voice Remote](#ariel-voice-remote)<br/>
-[Ariel Remote Class](#ariel-remote-class)<br/>
-    [- Get available Speakers](#get-available-speakers-remote)<br/>
-    [- Text To Audio (Remote | Editor Version)](#text-to-audio-remote--editor-version)<br/>
-    [- Text To Audio (Remote | Runtime Version)](#text-to-audio-remote--runtime-version)<br/>
-    [- Save Audio Clip (Remote)](#save-audio-clip)<br/>
-    [- Get Next Filename (Remote)](#get-next-filename)<br/>
-#### [Ariel Voice Local](#ariel-voice-local)<br/>
-[Ariel Local Class](#ariel-local-class)<br/>
-    [- Class Attributes](#class-attributes-local)<br/>
-    [- Start Local Server](#start-local-server)<br/>
-    [- Shutdown Local Server](#shutdown-local-server)<br/>
-    [- Restart Server](#restart-server)<br/>
-    [- Force Restart Server](#force-restart-server)<br/>
-    [- Is Server Running](#is-server-running)<br/>
-    [- Kill Process On Port](#kill-process-on-port)<br/>
-    [- Check Service Running On Port](#check-service-running-on-port)<br/>
-    [- Get available Speakers](#get-available-speakers-local)<br/>
-    [- Text To Audio (Local | Editor Version)](#text-to-audio-local--editor-version)<br/>
-    [- Text To Audio (Local | Runtime Version)](#text-to-audio-local--runtime-version)<br/>
-    [- Save Audio Clip (Local)](#save-audio-clip-local)<br/>
-    [- Get Next Filename (Local)](#get-next-filename-local)<br/>
-#### [Glossary](#glossary)
-[Glossary Class](#glossary-class)<br/>
-    [- Class Attributes](#glossary-class-attributes)<br/>
-    [- Write CSV](#write-csv)<br/>
-    [- Read CSV](#read-csv)<br/>
-    [- Edit CSV](#edit-csv)<br/>
-    [- Compare Sentence To Glossary](#compare-sentence-to-glossary)<br/>
-#### [Ariel Save Wav](#ariel-save-wav)<br/>
-    [Save bytes to file](#save-bytes-to-file)<br/>
-#### [Ariel Common Types](#ariel-common-types)<br/>
-[- Ariel TTS Class (remote)](#ariel-tts-class-editor-version)<br/>
-[- Ariel TTS Class (local)](#ariel-tts-class-local)<br/>
-[- Ariel Csv](#ariel-csv)<br/>
-[- Speaker](#speaker)<br/>
-[- Speaker Object](#speaker-object)<br/>
-[- Language](#language)<br/>
-[- Language Codes](#language-codes)<br/>
-[- Speaker Settings](#speaker-settings)<br/>
-[- Server State](#server-state)<br/>
+[Introduction](../Documentation/API.md#introduction)
+#### [Ariel Voice Remote](../Documentation/API.md#ariel-voice-remote)<br/>
+[Ariel Remote Class](../Documentation/API.md#ariel-remote-class)<br/>
+    [- Get available Speakers](../Documentation/API.md#get-available-speakers-remote)<br/>
+    [- Text To Audio (Remote | Editor Version)](../Documentation/API.md#text-to-audio-remote--editor-version)<br/>
+    [- Text To Audio (Remote | Runtime Version)](../Documentation/API.md#text-to-audio-remote--runtime-version)<br/>
+    [- Save Audio Clip (Remote)](../Documentation/API.md#save-audio-clip)<br/>
+    [- Get Next Filename (Remote)](../Documentation/API.md#get-next-filename)<br/>
+#### [Ariel Voice Local](../Documentation/API.md#ariel-voice-local)<br/>
+[Ariel Local Class](../Documentation/API.md#ariel-local-class)<br/>
+    [- Class Attributes](../Documentation/API.md#class-attributes-local)<br/>
+    [- Start Local Server](../Documentation/API.md#start-local-server)<br/>
+    [- Shutdown Local Server](../Documentation/API.md#shutdown-local-server)<br/>
+    [- Restart Server](../Documentation/API.md#restart-server)<br/>
+    [- Force Restart Server](../Documentation/API.md#force-restart-server)<br/>
+    [- Is Server Running](../Documentation/API.md#is-server-running)<br/>
+    [- Kill Process On Port](../Documentation/API.md#kill-process-on-port)<br/>
+    [- Check Service Running On Port](../Documentation/API.md#check-service-running-on-port)<br/>
+    [- Get available Speakers](../Documentation/API.md#get-available-speakers-local)<br/>
+    [- Text To Audio (Local | Editor Version)](../Documentation/API.md#text-to-audio-local--editor-version)<br/>
+    [- Text To Audio (Local | Runtime Version)](../Documentation/API.md#text-to-audio-local--runtime-version)<br/>
+    [- Save Audio Clip (Local)](../Documentation/API.md#save-audio-clip-local)<br/>
+    [- Get Next Filename (Local)](../Documentation/API.md#get-next-filename-local)<br/>
+#### [Glossary](../Documentation/API.md#glossary)
+[Glossary Class](../Documentation/API.md#glossary-class)<br/>
+    [- Class Attributes](../Documentation/API.md#glossary-class-attributes)<br/>
+    [- Write CSV](../Documentation/API.md#write-csv)<br/>
+    [- Read CSV](../Documentation/API.md#read-csv)<br/>
+    [- Edit CSV](../Documentation/API.md#edit-csv)<br/>
+    [- Compare Sentence To Glossary](../Documentation/API.md#compare-sentence-to-glossary)<br/>
+#### [Ariel Save Wav](../Documentation/API.md#ariel-save-wav)<br/>
+    [Save bytes to file](../Documentation/API.md#save-bytes-to-file)<br/>
+#### [Ariel Common Types](../Documentation/API.md#ariel-common-types)<br/>
+[- Ariel TTS Class (remote)](../Documentation/API.md#ariel-tts-class-editor-version)<br/>
+[- Ariel TTS Class (local)](../Documentation/API.md#ariel-tts-class-local)<br/>
+[- Ariel Csv](../Documentation/API.md#ariel-csv)<br/>
+[- Speaker](../Documentation/API.md#speaker)<br/>
+[- Speaker Object](../Documentation/API.md#speaker-object)<br/>
+[- Language](../Documentation/API.md#language)<br/>
+[- Language Codes](../Documentation/API.md#language-codes)<br/>
+[- Speaker Settings](../Documentation/API.md#speaker-settings)<br/>
+[- Server State](../Documentation/API.md#server-state)<br/>
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 <br/>
@@ -63,7 +63,7 @@ The plugin is divided into four main classes:
 
 The plugin also provides a set of common types used by the other classes.
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
@@ -95,7 +95,7 @@ Gets the available speakers from the Ariel API. Using your personal Api Key, you
 
 | Name              | Type           | Description |
 | ----------------- | -------------- | ----------- |
-| speakers          | Task\<SpeakerSettings\> | An object containing all available speakers and languages. For more information, see [Speaker Settings](#speaker-settings). |
+| speakers          | Task\<SpeakerSettings\> | An object containing all available speakers and languages. For more information, see [Speaker Settings](../Documentation/API.md#speaker-settings). |
 
 #### Exceptions
 
@@ -105,7 +105,7 @@ Gets the available speakers from the Ariel API. Using your personal Api Key, you
 | `UnityWebRequestException` | Thrown when there is an error with the web request. |
 | `JsonException` | Thrown when there is an error parsing the JSON response. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Text To Audio (Remote | Editor Version)
 
@@ -149,7 +149,7 @@ Generates audio from text using the Ariel API. The audio is generated using the 
 | `UnityWebRequestException` | Thrown when there is an error with the web request. |
 | `AudioClipException` | Thrown when there is an error creating the audio clip. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Text To Audio (Remote | Runtime Version)
 
@@ -190,7 +190,7 @@ Generates audio from text using the Ariel API. The audio is generated using the 
 | `UnityWebRequestException` | Thrown when there is an error with the web request. |
 | `AudioClipException` | Thrown when there is an error creating the audio clip. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Save Audio Clip
 
@@ -201,7 +201,7 @@ Namespace: `ArielVoiceRemote`
 
 Saves an audio clip to disk.
 
-> If being used in Editor mode, it is recommended to use the [Ariel Text To Audio](#text-to-audio-remote--editor-version) function, because it already saves the Audio Clip directly.
+> If being used in Editor mode, it is recommended to use the [Ariel Text To Audio](../Documentation/API.md#text-to-audio-remote--editor-version) function, because it already saves the Audio Clip directly.
 
 > If being used in Runtime, you will need to save the asset to the Resources folder, but it is recommended to use the Audio Clip directly as a variable to bind it to an audio source.
 
@@ -227,7 +227,7 @@ Saves an audio clip to disk.
 | `ArgumentNullException` | Thrown when the `audioClip` or `savePath` is null or empty. |
 | `IOException` | Thrown when there is an error saving the audio file. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Get Next Filename
 
@@ -256,7 +256,7 @@ Generates the next available file name. The file name is generated by appending 
 | ----------------- | ----------- |
 | `IOException` | Thrown when there is an error generating the next file name. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
@@ -277,7 +277,7 @@ This is not a static class, because we are storing data (such as the server proc
 | port              | int            | The port number used by the local server. |
 | process           | Process        | The process object for the local server. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Start Local Server
 
@@ -306,7 +306,7 @@ Starts the local server. The server must be running to generate audio from text.
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error starting the server process. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Shutdown Local Server
 
@@ -337,7 +337,7 @@ Stops the local server. The server should be stopped when it is no longer needed
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error stopping the server process. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Restart Server
 
@@ -360,7 +360,7 @@ Restarts the local server. The server must be running to generate audio from tex
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error restarting the server process. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Force Restart Server
 
@@ -383,7 +383,7 @@ Restarts the local server.
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error restarting the server process. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Is Server Running
 
@@ -400,7 +400,7 @@ Checks if the local server is running already or not.
 | ----------------- | -------------- | ----------- |
 | result            | bool           | Indicates whether the server is running. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Kill Process On Port
 
@@ -430,7 +430,7 @@ Kills the process running on the specified port.
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error killing the process. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Check Service Running On Port
 
@@ -460,7 +460,7 @@ Checks if a service is running on the specified port.
 | ----------------- | ----------- |
 | `ProcessException` | Thrown when there is an error checking the server status. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Get available Speakers (Local)
 
@@ -480,9 +480,9 @@ Gets the available speakers that are available for usage with the local server. 
 
 | Name              | Type           | Description |
 | ----------------- | -------------- | ----------- |
-| speakers          | SpeakerSettings | An object containing all available speakers and languages. For more information, see [Speaker Settings](#speaker-settings). |
+| speakers          | SpeakerSettings | An object containing all available speakers and languages. For more information, see [Speaker Settings](../Documentation/API.md#speaker-settings). |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Text To Audio (Local | Editor Version)
 
@@ -526,7 +526,7 @@ Generates audio from text using the local server. The audio is generated using t
 | `UnityWebRequestException` | Thrown when there is an error with the web request. |
 | `AudioClipException` | Thrown when there is an error creating the audio clip. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Text To Audio (Local | Runtime Version)
 
@@ -567,7 +567,7 @@ Generates audio from text using the local server. The audio is generated using t
 | `UnityWebRequestException` | Thrown when there is an error with the web request. |
 | `AudioClipException` | Thrown when there is an error creating the audio clip. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Save Audio Clip (Local)
 
@@ -578,7 +578,7 @@ Namespace: `ArielVoiceLocal`
 
 Saves an audio clip to disk.
 
-> If being used in Editor mode, it is recommended to use the [Ariel Text To Audio](#text-to-audio-local--editor-version) function, because it already saves the Audio Clip directly.
+> If being used in Editor mode, it is recommended to use the [Ariel Text To Audio](../Documentation/API.md#text-to-audio-local--editor-version) function, because it already saves the Audio Clip directly.
 
 > If being used in Runtime, you will need to save the asset to the Resources folder, but it is recommended to use the Audio Clip directly as a variable to bind it to an audio source.
 
@@ -604,7 +604,7 @@ Saves an audio clip to disk.
 | `ArgumentNullException` | Thrown when the `audioClip` or `savePath` is null or empty. |
 | `IOException` | Thrown when there is an error saving the audio file. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ### Get Next Filename (Local)
 
@@ -633,7 +633,7 @@ Generates the next available file name. The file name is generated by appending 
 | ----------------- | ----------- |
 | `IOException` | Thrown when there is an error generating the next file name. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
@@ -753,7 +753,7 @@ None
 
 None
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
@@ -857,7 +857,7 @@ Trims silence from the beginning and end of a list of samples.
 | ----------------- | ----------- |
 | `ArgumentNullException` | Thrown when the `samples` list is null. |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
@@ -894,7 +894,7 @@ The Ariel TTS class is used for the Editor Version of the Ariel plugin. It conta
 | VoiceImprovement  | string         | The voice improvement setting. | "" |
 | useVoiceImprovement | bool         | Indicates whether to use voice improvement. | false |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Ariel TTS Class (local)
 
@@ -903,7 +903,7 @@ Namespace: `ArielCommonTypes`
 
 ### Description
 
-The Ariel Local API Call class is used for the Local Version of the Ariel plugin. It is an internal class that is used within the [ArielVoiceLocal](#ariel-local-class) class. It contains all information that is passed to the local server to generate the audio.  
+The Ariel Local API Call class is used for the Local Version of the Ariel plugin. It is an internal class that is used within the [ArielVoiceLocal](../Documentation/API.md#ariel-local-class) class. It contains all information that is passed to the local server to generate the audio.  
 
 ### Class Attributes
 
@@ -928,7 +928,7 @@ The Ariel Local API Call class is used for the Local Version of the Ariel plugin
 | alien2            | bool           | Indicates whether to apply alien2 effect. | false |
 | stereo            | bool           | Indicates whether the audio is stereo. | false |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 
 ## Ariel Csv
@@ -938,7 +938,7 @@ Namespace: `ArielCommonTypes`
 
 ### Description
 
-The Ariel Csv class is used to manage the [glossary](#glossary-class) csv files. The class keeps track of the glossary file path and the list of glossary items.
+The Ariel Csv class is used to manage the [glossary](../Documentation/API.md#glossary-class) csv files. The class keeps track of the glossary file path and the list of glossary items.
 
 ### Class Attributes
 
@@ -947,7 +947,7 @@ The Ariel Csv class is used to manage the [glossary](#glossary-class) csv files.
 | Word              | string         | The word in the CSV file. | "" |
 | Pronunciation     | string         | The pronunciation of the word. | "" |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Speaker
 
@@ -966,12 +966,12 @@ The Speaker class represents a speaker. The class provides properties for the sp
 | language          | List<string>   | The list of languages the speaker can speak. | new List<string>() |
 | gender            | string         | The gender of the speaker. | "" |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 
 ## Speaker Object
 
-The Speaker Object class represents the return type of the [GetSpeakers](#get-available-speakers-remote) method. The class provides an array of speakers.
+The Speaker Object class represents the return type of the [GetSpeakers](../Documentation/API.md#get-available-speakers-remote) method. The class provides an array of speakers.
 
 ### Class Attributes
 
@@ -979,7 +979,7 @@ The Speaker Object class represents the return type of the [GetSpeakers](#get-av
 | ----------------- | -------------- | ----------- | ------------- |
 | speakers          | Speaker[]      | The array of speakers. | new Speaker[0] |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Language
 
@@ -988,7 +988,7 @@ Namespace: `ArielCommonTypes`
 
 ### Description
 
-The Language class represents a language. The class provides properties for the language's name and unified code representation for each [language](#language-codes). This class is marked as `Serializable`.
+The Language class represents a language. The class provides properties for the language's name and unified code representation for each [language](../Documentation/API.md#language-codes). This class is marked as `Serializable`.
 
 ### Class Attributes
 
@@ -997,7 +997,7 @@ The Language class represents a language. The class provides properties for the 
 | name              | string         | The name of the language. | "" |
 | code              | string         | The code of the language. | "" |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Language Codes
 
@@ -1047,7 +1047,7 @@ The Language Codes class provides a list of language codes.
 | Hindi             | hi             |
 | Portuguese        | pt             |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Speaker Settings
 
@@ -1056,7 +1056,7 @@ Namespace: `ArielCommonTypes`
 
 ### Description
 
-The Speaker Settings class represents the return value of the [GetSpeakers (Remote)](#get-available-speakers-remote) and [GetSpeakers (Local)](#get-available-speakers-local) method. The class provides an array of speakers and languages.
+The Speaker Settings class represents the return value of the [GetSpeakers (Remote)](../Documentation/API.md#get-available-speakers-remote) and [GetSpeakers (Local)](../Documentation/API.md#get-available-speakers-local) method. The class provides an array of speakers and languages.
 
 ### Class Attributes
 
@@ -1065,7 +1065,7 @@ The Speaker Settings class represents the return value of the [GetSpeakers (Remo
 | speakers          | Speaker[]      | The array of speakers. | new Speaker[0] |
 | languages         | Language[]     | The array of languages. | new Language[32] |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
 
 ## Server State
 
@@ -1083,4 +1083,4 @@ The Server State class represents the state of the server. The class provides pr
 | portInUse         | bool           | Indicates whether the port is in use. | true |
 | arielServerProcessRunning | bool   | Indicates whether the Ariel server process is running. | false |
 
-[Back to Top](#api-reference)
+[Back to Top](../Documentation/API.md#api-reference)
