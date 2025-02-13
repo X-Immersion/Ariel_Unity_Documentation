@@ -6,12 +6,14 @@
 
 [Introduction](../Documentation/API.md#introduction)
 #### [Ariel Voice Remote](../Documentation/API.md#ariel-voice-remote)<br/>
+
 [Ariel Remote Class](../Documentation/API.md#ariel-remote-class)<br/>
     [- Get available Speakers](../Documentation/API.md#get-available-speakers-remote)<br/>
     [- Text To Audio (Remote | Editor Version)](../Documentation/API.md#text-to-audio-remote--editor-version)<br/>
     [- Text To Audio (Remote | Runtime Version)](../Documentation/API.md#text-to-audio-remote--runtime-version)<br/>
     [- Save Audio Clip (Remote)](../Documentation/API.md#save-audio-clip)<br/>
     [- Get Next Filename (Remote)](../Documentation/API.md#get-next-filename)<br/>
+
 #### [Ariel Voice Local](../Documentation/API.md#ariel-voice-local)<br/>
 [Ariel Local Class](../Documentation/API.md#ariel-local-class)<br/>
     [- Class Attributes](../Documentation/API.md#class-attributes-local)<br/>
@@ -27,6 +29,7 @@
     [- Text To Audio (Local | Runtime Version)](../Documentation/API.md#text-to-audio-local--runtime-version)<br/>
     [- Save Audio Clip (Local)](../Documentation/API.md#save-audio-clip-local)<br/>
     [- Get Next Filename (Local)](../Documentation/API.md#get-next-filename-local)<br/>
+
 #### [Glossary](../Documentation/API.md#glossary)
 [Glossary Class](../Documentation/API.md#glossary-class)<br/>
     [- Class Attributes](../Documentation/API.md#glossary-class-attributes)<br/>

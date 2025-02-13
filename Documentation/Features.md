@@ -4,8 +4,8 @@
 
 ### On this page
 
-[🎚️ Audio effects](#-audio-effects)<br/>
-[📝 Tags](#-tags)<br/>
+[🎚️ Audio effects](../Documentation/Features.md#-audio-effects)<br/>
+[📝 Tags](../Documentation/Features.md#-tags)<br/>
 
 ## 🎚️ Audio effects
 
@@ -30,8 +30,8 @@ When generating audio speech with the Ariel plugin, you can apply audio effects 
 
 There are two types of tags that can be used:
 
-- [Pause Tags](#pause-tags)
-- [Emotion Tags](#emotion-tags)
+- [Pause Tags](../Documentation/Features.md#pause-tags)
+- [Emotion Tags](../Documentation/Features.md#emotion-tags)
 
 
 **Tags availability:** The tag system is currently only supported on the Remote version of Ariel.

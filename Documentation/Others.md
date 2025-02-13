@@ -4,11 +4,11 @@
 
 ### On this page
 
-[Plugin project settings](#plugin-project-settings)<br/>
-[Package a project](#package-a-project)<br/>
-    *[No runtime generated sentences](#no-runtime-generated-sentences)*<br/>
-    *[Blueprint only projects](#blueprint-only-projects)*<br/>
-[Adding local models](#adding-local-models)<br/>
+[Plugin project settings](../Documentation/Others.md#plugin-project-settings)<br/>
+[Package a project](../Documentation/Others.md#package-a-project)<br/>
+    *[No runtime generated sentences](../Documentation/Others.md#no-runtime-generated-sentences)*<br/>
+    *[Blueprint only projects](../Documentation/Others.md#blueprint-only-projects)*<br/>
+[Adding local models](../Documentation/Others.md#adding-local-models)<br/>
 
 ## Plugin project settings
 

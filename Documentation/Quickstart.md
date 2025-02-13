@@ -7,9 +7,9 @@
 
 ### On this page
 
-[🎬 Editor Pre-generation](#-editor-pre-generation)<br/>
-[🎤 Runtime generation](#-runtime-generation)<br/>
-[📚 Glossary](#-glossary)<br/>
+[🎬 Editor Pre-generation](../Documentation/Quickstart.md#-editor-pre-generation)<br/>
+[🎤 Runtime generation](../Documentation/Quickstart.md#-runtime-generation)<br/>
+[📚 Glossary](../Documentation/Quickstart.md#-glossary)<br/>
 
 ## 🎬 Editor Pre-generation
 
@@ -44,7 +44,7 @@ To create a game that supports Text-To-Speech inside a game, you will need to us
 
 It is recommended to use the API in a C# script to generate the audio file. 
 
-Our [Editor](#-editor-pre-generation) can help you to generate the audio file and test the different settings before using the API in your game. It used the same API as the plugin.
+Our [Editor](../Documentation/Quickstart.md#-editor-pre-generation) can help you to generate the audio file and test the different settings before using the API in your game. It used the same API as the plugin.
 
 > Be sure to not use the Editor Functions in a packaged game. The Editor functions are only available in the Editor.
 
