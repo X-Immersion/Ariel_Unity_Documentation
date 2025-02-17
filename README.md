@@ -5,11 +5,11 @@ include:
     - Assets/ArielVoiceGeneration/Documentation/Features.md
     - Assets/ArielVoiceGeneration/Documentation/API.md
     - Assets/ArielVoiceGeneration/Documentation/Others.md
-# Ariel Plugin for Unitz - Documentation
+# Ariel Plugin for Unity - Documentation
 
 ---
 
-# Ariel Plugin for Unitz - Documentation
+# Ariel Plugin for Unity - Documentation
 
 
 ![ariel thumbnail](./Media/ariel_thumbnail.png)
